@@ -31,7 +31,7 @@ export default class App extends React.Component {
   setupWorld = () => {
     let engine = Matter.Engine.create({enableSleeping: false});
     let world = engine.world;
-    world.gravity.y = 1.2;
+    world.gravity.y = 1.1;
 
     let bird = Matter.Bodies.rectangle(
       Constants.MAX_WIDTH / 4,

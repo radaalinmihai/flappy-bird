@@ -4,11 +4,14 @@ import Constants from './constants';
 const Physics = (entities, {touches, time}) => {
   let engine = entities.physics.engine;
   let bird = entities.bird.body;
-
+  let hadTouches = false;
   touches
     .filter(t => t.type === 'press')
     .forEach(t => {
-      Matter.Body.applyForce(bird, bird.position, {x: 0.00, y: -0.10});
+      if (!hadTouches) {
+        hadTouches = true;
+        Matter.Body.setVelocity(bird, {x: bird.velocity.x, y: -8});
+      }
     });
 
   for (let i = 1; i <= 4; i++) {
@@ -20,7 +23,7 @@ const Physics = (entities, {touches, time}) => {
         x: Constants.MAX_WIDTH * 2 - Constants.PIPE_WIDTH / 2,
         y: entities['pipe' + i].body.position.y,
       });
-    } else Matter.Body.translate(entities["pipe" + i].body, {x: -1, y: 0});
+    } else Matter.Body.translate(entities['pipe' + i].body, {x: -2, y: 0});
   }
 
   Matter.Engine.update(engine, time.delta);
