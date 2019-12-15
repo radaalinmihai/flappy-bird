@@ -67,7 +67,7 @@ export default class App extends React.Component {
   render() {
     const {running} = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <GameEngine
           ref={this.gameEngine}
           style={styles.gameContainer}
