@@ -5,11 +5,12 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "adb reverse tcp:8081 tcp:8081 && react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "matter-js": "^0.14.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-game-engine": "^0.12.3"
